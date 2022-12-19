@@ -33,10 +33,12 @@ folder_path_r = "respuestas"
 
 # Verifica si la carpeta NO existe
 if not os.path.exists(folder_path):
+  #si la carpeta no existe, la creamos
   os.mkdir(folder_path)
 
 # Verifica si la carpeta NO existe
 if not os.path.exists(folder_path_r):
+  #si la carpeta no existe, la creamos
   os.mkdir(folder_path_r)
   
 #creamos un arreglo de examenes
@@ -50,12 +52,15 @@ for i in range(1, 21):
   # Construye la ruta completa del archivo, incluyendo la carpeta
   filepath = folder_path + "/" +filename
 
+  #creamos una lista depreguntas vacia
   preguntas = []
   #obtenemos 20 preguntas aleatorias
   for j in range(0,10):
     # Obtiene un índice aleatorio del array
     indice_aleatorio = random.randint(0, len(banco_preguntas) - 1)
+    #extraemos la pregunta del banco usando el indice_aleatorio
     pregunta = banco_preguntas[indice_aleatorio]
+    #agregamos la pregunta a la lista de preguntas
     preguntas.append(pregunta)
   #agregamos las preguntas del examen al arreglo de examenes
   examenes.append(preguntas)
@@ -67,6 +72,7 @@ for i in range(1, 21):
       f.write(pregunta.texto + "\n")
       #Iteramos para obtener las opciones y las escribimos dando un salto de linea al final
       for opcion in pregunta.opciones:
+        #Escribimos las opciones que existen en esta pregunta
         f.write(opcion + "\n")
       #Agregamos un salto de lines al final para pasar a la siguiente pregunta
       f.write("\n")
